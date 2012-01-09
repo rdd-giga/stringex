@@ -15,22 +15,22 @@ module Stringex
     # This is roughly equivalent to ActionView's <tt>textilize_without_paragraph</tt>
     # except that it makes RedCloth do all the work instead of just gsubbing the return
     # from RedCloth.
-    def to_html(lite_mode = false)
-      if defined?(RedCloth)
-        if lite_mode
-          RedCloth.new(self, [:lite_mode]).to_html
-        else
-          if self =~ /<pre>/
-            RedCloth.new(self).to_html.tr("\t", "")
-          else
-            RedCloth.new(self).to_html.tr("\t", "").gsub(/\n\n/, "")
-          end
-        end
-      else
-        warn "String#to_html was called without RedCloth being successfully required"
-        self
-      end
-    end
+    # def to_html(lite_mode = false)
+    #   if defined?(RedCloth)
+    #     if lite_mode
+    #       RedCloth.new(self, [:lite_mode]).to_html
+    #     else
+    #       if self =~ /<pre>/
+    #         RedCloth.new(self).to_html.tr("\t", "")
+    #       else
+    #         RedCloth.new(self).to_html.tr("\t", "").gsub(/\n\n/, "")
+    #       end
+    #     end
+    #   else
+    #     warn "String#to_html was called without RedCloth being successfully required"
+    #     self
+    #   end
+    # end
 
     # Create a URI-friendly representation of the string. This is used internally by
     # acts_as_url[link:classes/Stringex/ActsAsUrl/ClassMethods.html#M000012]
