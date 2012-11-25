@@ -48,7 +48,7 @@ module Stringex
     # below to see which methods are run.
     def remove_formatting(options = {})
       strip_html_tags.convert_smart_punctuation.convert_accented_entities.convert_vulgar_fractions.
-        convert_misc_entities.convert_misc_characters(options).to_ascii.collapse
+        convert_misc_entities.to_ascii.convert_misc_characters(options).collapse
     end
 
     # Removes HTML tags from text. This code is simplified from Tobias Luettke's regular expression
